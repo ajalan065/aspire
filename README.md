@@ -141,11 +141,11 @@ The above two ids will be handy in calling APIs from postman.<br>
     <br>
     c. This will return an object in JSON format. Please note the loan id under the attribute `id`. This will be used in endpoints to approve / repay installments.
 <li><strong>To approve loan:</strong></li>
-    a. Logout from existing session using the below. Endpoint `DELETE http://localhost:3000/users/sign_out`<br>
+    a. Logout from existing session using the below (in case logged in as customer). Endpoint `DELETE http://localhost:3000/users/sign_out`<br>
     b. Login using admin as shown in Step 1(c).<br>
     c. For approving loan - Endpoint: `POST http://localhost:3000/users/{customer_id}/loans/{id}/approve`
 <li><strong>To repay the installment:</strong></li>
-    a. Endpoint: `POST http://localhost:3000/users/{customer_id}/loans/{id}/repay`<br>
+    a. Log in as customer using first step of Approve Loan (in case logged in as admin). Endpoint: `POST http://localhost:3000/users/{customer_id}/loans/{id}/repay`<br>
     b. Body:
         <pre>
         {
