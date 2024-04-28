@@ -106,14 +106,33 @@ The above two ids will be handy in calling APIs from postman
 1. Authenticating user:
     a. Endpoint: `POST http://localhost:3000/users/sign_in`
     b. To login as customer, use the below credentials in body param:
-        `users[email] -> customer@example.com`
-        `users[password] -> password`
+        ```
+        {
+            "user": {
+                "email": "customer@example.com",
+                "password": "password"
+            }
+        }
+        ```
     c. To login as admin, user the below credentials:
-        `users[email] -> admin@example.com`
-        `users[password] -> password`
+        ```
+        {
+            "user": {
+                "email": "admin@example.com",
+                "password": "password"
+            }
+        }
+        ```
 2. To create loan:
     a. Endpoint: `POST http://localhost:3000/users/{customer}/loans`
     b. Body:
-        `loan[disbursed_amount] --> 5000`
-        `loan[term] --> 3`
-        `loan[start_date] ---> 2024-04-29`
+        ```
+        {
+            "loan": {
+                "disbursed_amount": 5000,
+                "term": 2,
+                "start_date": "2024-04-29"
+            }
+        }
+        ```
+    c. This will return an object with loan id as well in JSON format.
