@@ -8,25 +8,26 @@ Things you may want to cover:
 
 * Rails version - 6+
 
-* Assumptions:
+#### Assumptions:
 1. The application does not cover the scope of creation of customers or admins, and hence, dummy accounts are already created for testing purposes.
 2. If the customer pays extra in any installment, then the excess balance is adjusted equally among all the next upcoming installments.
 3. Loan repayment will always be done for immediate next pending installment, and can not be skipped under any case.
 4. Loan repayments are always done on the pre-populated payment date in database.
 
-Steps to set up the application:
+### Steps to set up the application:
 
-1. Download the repo from 
+1. Download the repo from https://github.com/ajalan065/aspire.git
 2. Install the gems - `bundle install`
 3. Set up database - `rake db:setup && rake db:migrate && rake db:seed`
 4. Application is set to use.
 
-* Test via Rspecs
+## Test via Rspecs
+
 Cases covered:
 --------------
 
-Models:
-1. Loan
+Models:<br>
+1. <strong>Loan</strong>
     a. Validations check -- 
         i. Invalid if term / amount / start date is missing
         ii. Creates loans if all the above are present
@@ -34,7 +35,7 @@ Models:
         i. Creates multiple installments for valid loans
     c. Reset installment amount in case of excess payments --
         i. Adjusted in all remaining pending installments
-2. LoanRepayment
+2. <strong>LoanRepayment</strong>
     a. Validations check --
         i. Invalid if amount / payment date is missing
         ii. Create repayments if all the above are present
@@ -43,12 +44,12 @@ Models:
             - If amount is equal, then just update status
             - If amount is less, then raise error and return without doing anything
             - If amount is greater, then adjust the excess balance among remaining pending installments.
-3. User
+3. <strong>User</strong>
     a. Assign default role to user --
         i. On user creation, give default role as `customer`.
 
-Controllers:
-1. LoansController
+Controllers:<br>
+1. <strong>LoansController</strong>
     a. #index action --
         i. When user is not authenticated, return 302 (should be redirecting to signin page from UI perspective)
         ii. When user is authenticated
@@ -68,7 +69,7 @@ Controllers:
         ii. When user is authenticated
             - When user is admin, can access any loan
             - When user is customer, should be able to access only his own loans
-2. LoanRepaymentsController
+2. <strong>LoanRepaymentsController</strong>
     a. #repay action --
         i. When user is not authenticated, return 302
         ii. When user is authenticated
