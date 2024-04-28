@@ -61,6 +61,7 @@ class Loan < ApplicationRecord
 
     def check_and_update_status
         if collected_amount == disbursed_amount && status == 'approved'
+            self.loan_repayments.update_all(status: :paid)
             self.update!(status: :paid)
         end
     end

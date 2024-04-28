@@ -8,6 +8,15 @@ Things you may want to cover:
 
 * Rails version - 6+
 
+### How the application works
+The application has two users setup. (a) Customer, (b) Admin.
+<ul>
+<li>Customers can create loans</li>
+<li>Admin approves the loans</li>
+<li>Customer can repay the installments for approved loans</li>
+<li>Once the collected amount equals the disbursed amount, or all the installments are marked paid, the loan is marked fully paid</li>
+</ul>
+
 #### Assumptions:
 1. The application does not cover the scope of creation of customers or admins, and hence, dummy accounts are already created for testing purposes.
 2. If the customer pays extra in any installment, then the excess balance is adjusted equally among all the next upcoming installments.
