@@ -104,7 +104,7 @@ admin_id = User.find_by(email: 'admin@example.com').id
 The above two ids will be handy in calling APIs from postman.<br>
 
 <ol>
-<li>Authenticating user:</li>
+<li><strong>Authenticating user:</strong></li>
     a. Endpoint: `POST http://localhost:3000/users/sign_in`<br>
     b. To login as customer, use the below credentials in body param:
     <pre>
@@ -126,7 +126,7 @@ The above two ids will be handy in calling APIs from postman.<br>
     }
     </pre>
 <br>
-<li>To create loan:</li>
+<li><strong>To create loan:</strong></li>
     a. Endpoint: `POST http://localhost:3000/users/{customer_id}/loans`<br>
     b. Body:
     <pre>
@@ -140,11 +140,11 @@ The above two ids will be handy in calling APIs from postman.<br>
     </pre>
     <br>
     c. This will return an object in JSON format. Please note the loan id under the attribute `id`. This will be used in endpoints to approve / repay installments.
-<li>To approve loan:</li>
+<li><strong>To approve loan:</strong></li>
     a. Logout from existing session using the below. Endpoint `DELETE http://localhost:3000/users/sign_out`<br>
     b. Login using admin as shown in Step 1(c).<br>
     c. For approving loan - Endpoint: `POST http://localhost:3000/users/{customer_id}/loans/{id}/approve`
-<li>To repay the installment:</li>
+<li><strong>To repay the installment:</strong></li>
     a. Endpoint: `POST http://localhost:3000/users/{customer_id}/loans/{id}/repay`<br>
     b. Body:
         <pre>
