@@ -138,7 +138,7 @@ The above two ids will be handy in calling APIs from postman
 }
 </pre>
 <br>
-    c. This will return an object in JSON format. Please note the loan id under the attribute `id`. This will be used in endpoints to approve / repay installments.
+    c. This will return an object in JSON format. Please note the loan id under the attribute `id`. This will be used in endpoints to approve / repay installments.<br>
 3. To approve loan:<br>
     a. Logout from existing session using the below. Endpoint `DELETE http://localhost:3000/users/sign_out`<br>
     b. Login using admin as shown in Step 1(c).<br>
