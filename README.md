@@ -101,7 +101,7 @@ customer_id = User.find_by(email: 'customer@example.com').id
 admin_id = User.find_by(email: 'admin@example.com').id
 ```
 
-The above two ids will be handy in calling APIs from postman
+The above two ids will be handy in calling APIs from postman.<br>
 
 1. Authenticating user:<br>
     a. Endpoint: `POST http://localhost:3000/users/sign_in`<br>
@@ -125,7 +125,7 @@ The above two ids will be handy in calling APIs from postman
 }
 </pre>
 <br>
-2. To create loan:
+2. To create loan:<br>
     a. Endpoint: `POST http://localhost:3000/users/{customer_id}/loans`<br>
     b. Body:
 <pre>
