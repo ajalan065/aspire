@@ -106,27 +106,27 @@ The above two ids will be handy in calling APIs from postman
 1. Authenticating user:
     a. Endpoint: `POST http://localhost:3000/users/sign_in`
     b. To login as customer, use the below credentials in body param:
-```
+<code>
 {
     "user": {
         "email": "customer@example.com",
         "password": "password"
     }
 }
-```
+</code>
     c. To login as admin, user the below credentials:
-```
+<code>
 {
     "user": {
         "email": "admin@example.com",
         "password": "password"
     }
 }
-```
+</code>
 2. To create loan:
     a. Endpoint: `POST http://localhost:3000/users/{customer_id}/loans`
     b. Body:
-        ```
+        <code>
         {
             "loan": {
                 "disbursed_amount": 5000,
@@ -134,7 +134,7 @@ The above two ids will be handy in calling APIs from postman
                 "start_date": "2024-04-29"
             }
         }
-        ```
+        </code>
     c. This will return an object in JSON format. Please note the loan id under the attribute `id`. This will be used in endpoints to approve / repay installments.
 3. To approve loan:
     a. Logout from existing session using the below. Endpoint `DELETE http://localhost:3000/users/sign_out`
