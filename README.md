@@ -126,7 +126,7 @@ The above two ids will be handy in calling APIs from postman
 </pre>
 <br>
 2. To create loan:
-    a. Endpoint: `POST http://localhost:3000/users/{customer_id}/loans`
+    a. Endpoint: `POST http://localhost:3000/users/{customer_id}/loans`<br>
     b. Body:
 <pre>
 {
@@ -139,13 +139,13 @@ The above two ids will be handy in calling APIs from postman
 </pre>
 <br>
     c. This will return an object in JSON format. Please note the loan id under the attribute `id`. This will be used in endpoints to approve / repay installments.
-3. To approve loan:
-    a. Logout from existing session using the below. Endpoint `DELETE http://localhost:3000/users/sign_out`
-    b. Login using admin as shown in Step 1(c).
-    c. For approving loan:
+3. To approve loan:<br>
+    a. Logout from existing session using the below. Endpoint `DELETE http://localhost:3000/users/sign_out`<br>
+    b. Login using admin as shown in Step 1(c).<br>
+    c. For approving loan:<br>
         - Endpoint: `POST http://localhost:3000/users/{customer_id}/loans/{id}/approve`
-4. To repay the installment:
-    a. Endpoint: `POST http://localhost:3000/users/{customer_id}/loans/{id}/repay`
+4. To repay the installment:<br>
+    a. Endpoint: `POST http://localhost:3000/users/{customer_id}/loans/{id}/repay`<br>
     b. Body:
         <pre>
         {
@@ -155,4 +155,4 @@ The above two ids will be handy in calling APIs from postman
         }
         </pre>
         <br>
-    c. Marks the installment as paid.
+    c. Marks the installment as paid.<br>
