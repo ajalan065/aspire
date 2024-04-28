@@ -60,7 +60,8 @@ class Loan < ApplicationRecord
     end
 
     def check_and_update_status
-        if collected_amount == disbursed_amount && status == 'approved'
+        installments = self.loan_repayments.pluck(:status).uniq!
+        if (status == 'approved') && ((collected_amount == disbursed_amount) || (!installments.include?('pending')))
             self.loan_repayments.update_all(status: :paid)
             self.update!(status: :paid)
         end
