@@ -21,10 +21,9 @@ Things you may want to cover:
 3. Set up database - `rake db:setup && rake db:migrate && rake db:seed`
 4. Application is set to use.
 
-### Test via Rspecs
-
-Cases covered:
+Test via Rspecs
 --------------
+### Cases covered
 
 Models:
 <ol>
@@ -83,12 +82,14 @@ Controllers:<br>
                 -> If amount is less, do not update the status and return with error message<br>
                 -> If amount is greater, mark the installment paid and adjust the excess balance in next all pending installments equally.<br>
 
-How to Run Rspecs
------------------
+### How to Run Rspecs
+
 1. For models, run in terminal `rspec spec/models`
 2. For controllers, run in terminal `rspec spec/controllers`
 
-### Test via API
+Test via API
+------------
+
 1. The application is seeded up with two users:
     a. Customer - Email: `customer@example.com` -- Password: `password`
     b. Admin - Email: `admin@example.com` -- Password: `password`
