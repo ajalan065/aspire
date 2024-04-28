@@ -106,23 +106,23 @@ The above two ids will be handy in calling APIs from postman
 1. Authenticating user:
     a. Endpoint: `POST http://localhost:3000/users/sign_in`
     b. To login as customer, use the below credentials in body param:
-        ```
-        {
-            "user": {
-                "email": "customer@example.com",
-                "password": "password"
-            }
-        }
-        ```
+```
+{
+    "user": {
+        "email": "customer@example.com",
+        "password": "password"
+    }
+}
+```
     c. To login as admin, user the below credentials:
-        ```
-        {
-            "user": {
-                "email": "admin@example.com",
-                "password": "password"
-            }
-        }
-        ```
+```
+{
+    "user": {
+        "email": "admin@example.com",
+        "password": "password"
+    }
+}
+```
 2. To create loan:
     a. Endpoint: `POST http://localhost:3000/users/{customer_id}/loans`
     b. Body:
