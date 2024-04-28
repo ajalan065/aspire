@@ -97,8 +97,8 @@ Run `rails s` to start the rails server at port 3000
 
 Note: Open Rails console using `rails c` and type the below code snippets:
 ```
-customer = User.find_by(email: 'customer@example.com').id
-admin = User.find_by(email: 'admin@example.com').id
+customer_id = User.find_by(email: 'customer@example.com').id
+admin_id = User.find_by(email: 'admin@example.com').id
 ```
 
 The above two ids will be handy in calling APIs from postman
@@ -124,7 +124,7 @@ The above two ids will be handy in calling APIs from postman
         }
         ```
 2. To create loan:
-    a. Endpoint: `POST http://localhost:3000/users/{customer}/loans`
+    a. Endpoint: `POST http://localhost:3000/users/{customer_id}/loans`
     b. Body:
         ```
         {
@@ -135,4 +135,20 @@ The above two ids will be handy in calling APIs from postman
             }
         }
         ```
-    c. This will return an object with loan id as well in JSON format.
+    c. This will return an object in JSON format. Please note the loan id under the attribute `id`. This will be used in endpoints to approve / repay installments.
+3. To approve loan:
+    a. Logout from existing session using the below. Endpoint `DELETE http://localhost:3000/users/sign_out`
+    b. Login using admin as shown in Step 1(c).
+    c. For approving loan:
+        - Endpoint: `POST http://localhost:3000/users/{customer_id}/loans/{id}/approve`
+4. To repay the installment:
+    a. Endpoint: `POST http://localhost:3000/users/{customer_id}/loans/{id}/repay`
+    b. Body:
+        ```
+        {
+            "loan": {
+                "amount": 1000
+            }
+        }
+        ```
+    c. Marks the installment as paid.
