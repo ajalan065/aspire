@@ -42,7 +42,6 @@ class Loan < ApplicationRecord
         )
     end
 
-    # Assumption: if paid extra, then adjust in remaining terms
     def reset_installment_amounts
         pending_installments = LoanRepayment.where(loan_id: self.id, status: :pending)
         balance_amount = self.disbursed_amount - self.collected_amount
