@@ -26,59 +26,62 @@ Things you may want to cover:
 Cases covered:
 --------------
 
-Models:<br>
-1. <strong>Loan</strong>
-    a. Validations check -- 
-        i. Invalid if term / amount / start date is missing
-        ii. Creates loans if all the above are present
-    b. Repayment schedule creation --
-        i. Creates multiple installments for valid loans
-    c. Reset installment amount in case of excess payments --
-        i. Adjusted in all remaining pending installments
-2. <strong>LoanRepayment</strong>
-    a. Validations check --
-        i. Invalid if amount / payment date is missing
-        ii. Create repayments if all the above are present
-    b. Installments marked paid --
-        i. Immediate next pending installment is marked paid.
-            - If amount is equal, then just update status
-            - If amount is less, then raise error and return without doing anything
-            - If amount is greater, then adjust the excess balance among remaining pending installments.
-3. <strong>User</strong>
-    a. Assign default role to user --
-        i. On user creation, give default role as `customer`.
+Models:
+<ol>
+<li><strong>Loan</strong></li>
+    a. Validations check -- <br>
+        i. Invalid if term / amount / start date is missing<br>
+        ii. Creates loans if all the above are present<br>
+    b. Repayment schedule creation --<br>
+        i. Creates multiple installments for valid loans<br>
+    c. Reset installment amount in case of excess payments --<br>
+        i. Adjusted in all remaining pending installments<br>
+<li><strong>LoanRepayment</strong></li>
+    a. Validations check --<br>
+        i. Invalid if amount / payment date is missing<br>
+        ii. Create repayments if all the above are present<br>
+    b. Installments marked paid --<br>
+        i. Immediate next pending installment is marked paid.<br>
+            - If amount is equal, then just update status<br>
+            - If amount is less, then raise error and return without doing anything<br>
+            - If amount is greater, then adjust the excess balance among remaining pending installments.<br>
+<li><strong>User</strong></li>
+    a. Assign default role to user --<br>
+        i. On user creation, give default role as `customer`.<br>
+</ol>
 
 Controllers:<br>
-1. <strong>LoansController</strong>
-    a. #index action --
-        i. When user is not authenticated, return 302 (should be redirecting to signin page from UI perspective)
-        ii. When user is authenticated
-            - Should show loans of the user
-    b. #create action --
-        i. When user is not authenticated, return 302
-        ii. When user is authenticated
-            - If invalid params, then do not create object and return 422
-            - If valid params, then create loan in `pending` state
-    c. #approve action --
-        i. When user is not authenticated, return 302
-        ii. When user is authenticated
-            - When user is admin, should be able to approve loans
-            - When user is not admin, should not be able to approve loans
-    d. #show action --
-        i. When user is not authenticated, return 302
-        ii. When user is authenticated
-            - When user is admin, can access any loan
-            - When user is customer, should be able to access only his own loans
-2. <strong>LoanRepaymentsController</strong>
-    a. #repay action --
-        i. When user is not authenticated, return 302
-        ii. When user is authenticated
-            - Raise Loan Not Found error if no loan found for passed id.
-            - Raise invalid loan error if loan is not approved or already paid
-            - When loan is valid
-                -> If amount is equal, mark the installment paid
-                -> If amount is less, do not update the status and return with error message
-                -> If amount is greater, mark the installment paid and adjust the excess balance in next all pending installments equally,
+<ol>
+<li><strong>LoansController</strong></li>
+    a. #index action --<br>
+        i. When user is not authenticated, return 302 (should be redirecting to signin page from UI perspective)<br>
+        ii. When user is authenticated<br>
+            - Should show loans of the user<br>
+    b. #create action --<br>
+        i. When user is not authenticated, return 302<br>
+        ii. When user is authenticated<br>
+            - If invalid params, then do not create object and return 422<br>
+            - If valid params, then create loan in `pending` state<br>
+    c. #approve action --<br>
+        i. When user is not authenticated, return 302<br>
+        ii. When user is authenticated<br>
+            - When user is admin, should be able to approve loans<br>
+            - When user is not admin, should not be able to approve loans<br>
+    d. #show action --<br>
+        i. When user is not authenticated, return 302<br>
+        ii. When user is authenticated<br>
+            - When user is admin, can access any loan<br>
+            - When user is customer, should be able to access only his own loans<br>
+<li><strong>LoanRepaymentsController</strong></li>
+    a. #repay action --<br>
+        i. When user is not authenticated, return 302<br>
+        ii. When user is authenticated<br>
+            - Raise Loan Not Found error if no loan found for passed id.<br>
+            - Raise invalid loan error if loan is not approved or already paid<br>
+            - When loan is valid<br>
+                -> If amount is equal, mark the installment paid<br>
+                -> If amount is less, do not update the status and return with error message<br>
+                -> If amount is greater, mark the installment paid and adjust the excess balance in next all pending installments equally.<br>
 
 How to Run Rspecs
 -----------------
